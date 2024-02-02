@@ -1,14 +1,4 @@
 
-
-disableEmailVerification: true
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          facebook:
-            client-id: 1074447223835708
-            client-secret: ad9ddbb738593b19a6d6d4ae9ba7d0b4
   datasource:
     url: jdbc:mysql://localhost:3306/thirdParty?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
