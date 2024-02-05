@@ -6,14 +6,12 @@ import lombok.AllArgsConstructor;
 import ma.youcode.thirdparty.repository.UserRepository;
 
 @AllArgsConstructor
-public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
-
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
     private UserRepository userRepository;
     @Override
-    public boolean isValid(String username, ConstraintValidatorContext constraintValidatorContext) {
-
-        return username!=null
-                && userRepository.findByUsername(username)
-                .orElse(null) == null ;
+    public boolean isValid(String email, ConstraintValidatorContext constraintValidatorContext) {
+        return email !=null
+                &&
+                userRepository.findByEmail(email).orElse(null)==null;
     }
 }

@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.model;
+package ma.youcode.thirdparty.model.Dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ma.youcode.thirdparty.userDetails.validation.PasswordConfirmed;
+import ma.youcode.thirdparty.userDetails.validation.PasswordPolicy;
+import ma.youcode.thirdparty.userDetails.validation.UniqueEmail;
+import ma.youcode.thirdparty.userDetails.validation.UniqueUsername;
 
 
 @AllArgsConstructor
