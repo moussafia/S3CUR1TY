@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.userDetails.util;
+package ma.youcode.thirdparty.util;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

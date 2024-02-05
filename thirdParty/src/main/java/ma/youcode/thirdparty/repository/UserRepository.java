@@ -1,6 +1,6 @@
 package ma.youcode.thirdparty.repository;
 
-import ma.youcode.thirdparty.model.entity.AppUser;
+import ma.youcode.thirdparty.modal.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

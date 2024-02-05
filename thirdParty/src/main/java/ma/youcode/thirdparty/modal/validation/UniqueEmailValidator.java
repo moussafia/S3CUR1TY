@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.userDetails.validation;
+package ma.youcode.thirdparty.modal.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

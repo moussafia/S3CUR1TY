@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.model.Dto;
+package ma.youcode.thirdparty.modal.Dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

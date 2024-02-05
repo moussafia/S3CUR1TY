@@ -1,8 +1,8 @@
-package ma.youcode.thirdparty.userDetails.validation;
+package ma.youcode.thirdparty.modal.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import ma.youcode.thirdparty.model.Dto.UserDto;
+import ma.youcode.thirdparty.modal.Dto.UserDto;
 
 public class PasswordConfirmedValidator implements ConstraintValidator<PasswordConfirmed, Object> {
 

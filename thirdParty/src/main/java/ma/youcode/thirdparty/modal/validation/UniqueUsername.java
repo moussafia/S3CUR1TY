@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.userDetails.validation;
+package ma.youcode.thirdparty.modal.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -8,12 +8,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.TYPE})
+@Target({ElementType.METHOD,ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PasswordConfirmedValidator.class)
-public @interface PasswordConfirmed {
-    String message() default "Passwords do not match";
+@Constraint(validatedBy = UniqueUsernameValidator.class)
+public @interface UniqueUsername {
+    String message() default "Username already exists";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
-
 }

@@ -1,12 +1,15 @@
 package ma.youcode.thirdparty.security;
 
 import lombok.RequiredArgsConstructor;
+import ma.youcode.thirdparty.service.UserDetailsService;
 import ma.youcode.thirdparty.userDetails.Oauth2AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,18 +27,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/index", true)
-                .and()
-                .oauth2Login()
-                .loginPage("/login")
-               .successHandler(authenticationSuccessHandler)
-                .and()
-                .authorizeRequests()
-                .requestMatchers("/register","/login").permitAll()
-                .requestMatchers("/css/**", "/webjars/**").permitAll()
-                .anyRequest().hasRole("USER");
+            .formLogin(form ->
+                form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/index", true)
+        )
+                .oauth2Login(oauth2 ->
+                        oauth2
+                                .loginPage("/login")
+                                .successHandler(authenticationSuccessHandler)
+
+                )
+                .authorizeRequests(req-> req
+                        .requestMatchers("/register", "/login").permitAll()
+                        .requestMatchers("/css/**", "/webjars/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
@@ -48,4 +56,5 @@ public class SecurityConfig {
         DelegatingPasswordEncoder encoder = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
         return encoder;
     }
+
 }

@@ -1,4 +1,4 @@
-package ma.youcode.thirdparty.model.entity;
+package ma.youcode.thirdparty.modal.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -26,5 +26,6 @@ public class AppUser {
     private String email;
     @NonNull
     private String password;
+    private Boolean verified;
 
 }
