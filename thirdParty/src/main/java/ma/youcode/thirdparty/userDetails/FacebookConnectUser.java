@@ -37,18 +37,21 @@ public class FacebookConnectUser implements OAuth2User, ThirdPartyAuthenticatedP
 
 	@Override
 	public String getFirstName() {
+
 		return this.getAttributes().get("given_name").toString();
 	}
 
 
 	@Override
 	public String getLastName() {
+
 		return this.getAttributes().get("family_name").toString();
 	}
 
 
 	@Override
 	public String getFirstAndLastName() {
+
 		return getName();
 	}	
 	

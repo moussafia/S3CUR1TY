@@ -17,12 +17,6 @@ public class MFAUser extends User implements ThirdPartyAuthenticatedPrincipal {
 
 	@Setter
 	@Getter
-	private String securityPin;
-	@Setter
-	@Getter
-	private boolean totpEnabled;
-	@Setter
-	@Getter
 	private String firstName;
 	@Setter
 	@Getter
@@ -33,11 +27,13 @@ public class MFAUser extends User implements ThirdPartyAuthenticatedPrincipal {
 	
 	@Override
 	public String getFirstAndLastName() {
+
 		return firstName+" "+lastName;
 	}
 
 	@Override
 	public String getEmail() {
+
 		return email;
 	}
 }

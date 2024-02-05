@@ -15,25 +15,23 @@ import java.io.IOException;
 @Configuration("oauth2authSuccessHandler")
 @RequiredArgsConstructor
 public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccessHandler{
-
 	private final RedirectStrategy redirectStrategy;
-
-
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+										FilterChain chain,
+										Authentication authentication)
+			throws IOException, ServletException {
 		AuthenticationSuccessHandler.super.onAuthenticationSuccess(request, response, chain, authentication);
 	}
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws Exception {
+	public void onAuthenticationSuccess(HttpServletRequest request,
+										HttpServletResponse response,
+			Authentication authentication) throws IOException {
 
-		this.redirectStrategy.sendRedirect(request, response, "/portfolio");
+		this.redirectStrategy.sendRedirect(request, response, "/index");
 	}
 
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-	}
 
 }
