@@ -24,7 +24,7 @@ public class AppUser {
     @Email
     @NonNull
     private String email;
-    @NonNull
+
     private String password;
     private Boolean verified;
 

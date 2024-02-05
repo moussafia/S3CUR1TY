@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import ma.youcode.thirdparty.modal.Dto.UserRegistrationRequest;
 import ma.youcode.thirdparty.modal.entity.AppUser;
 import ma.youcode.thirdparty.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,9 @@ import java.util.Optional;
 public class UserService {
     private UserRepository userRepository;
 
+    @Autowired
     public UserService(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
