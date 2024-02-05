@@ -34,6 +34,7 @@ public class AdditionalAuthenticationProvider extends DaoAuthenticationProvider 
 	@Override
 	@Autowired
 	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+
 		super.setPasswordEncoder(passwordEncoder);
 	}
 	
