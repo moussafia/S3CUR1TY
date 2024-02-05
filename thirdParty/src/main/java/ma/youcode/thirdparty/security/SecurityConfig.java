@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -37,8 +38,10 @@ public class SecurityConfig {
                         oauth2
                                 .loginPage("/login")
                                 .successHandler(this.authenticationSuccessHandler)
-
                 )
+                .logout()
+                .logoutSuccessHandler(oidcLogoutSuccessHandler())
+                .and()
                 .authorizeRequests(req-> req
                         .requestMatchers("/register", "/login").permitAll()
                         .requestMatchers("/css/**", "/webjars/**").permitAll()
@@ -56,6 +59,12 @@ public class SecurityConfig {
     public PasswordEncoder getPasswordEncoder(){
         DelegatingPasswordEncoder encoder = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
         return encoder;
+    }
+    private OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
+        OidcClientInitiatedLogoutSuccessHandler successHandler =
+                new OidcClientInitiatedLogoutSuccessHandler(this.clientRegistrationRepository);
+        successHandler.setPostLogoutRedirectUri("http://localhost:8080/");
+        return successHandler;
     }
 
 }
