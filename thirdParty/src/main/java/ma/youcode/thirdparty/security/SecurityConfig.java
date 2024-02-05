@@ -13,29 +13,30 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled=true)
-@RequiredArgsConstructor
-
 public class SecurityConfig {
-    @Autowired
-    private final Oauth2AuthenticationSuccessHandler authenticationSuccessHandler;
+    private Oauth2AuthenticationSuccessHandler authenticationSuccessHandler;
+    private ClientRegistrationRepository clientRegistrationRepository;
+
+    public SecurityConfig(Oauth2AuthenticationSuccessHandler authenticationSuccessHandler,
+                          ClientRegistrationRepository clientRegistrationRepository) {
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+        this.clientRegistrationRepository = clientRegistrationRepository;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .formLogin(form ->
-                form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/index", true)
-        )
                 .oauth2Login(oauth2 ->
                         oauth2
                                 .loginPage("/login")
-                                .successHandler(authenticationSuccessHandler)
+                                .successHandler(this.authenticationSuccessHandler)
 
                 )
                 .authorizeRequests(req-> req

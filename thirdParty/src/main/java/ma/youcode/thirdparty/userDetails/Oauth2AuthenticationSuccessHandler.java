@@ -9,13 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-
-@Configuration("oauth2authSuccessHandler")
-@RequiredArgsConstructor
+@Component
 public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccessHandler{
-	private final RedirectStrategy redirectStrategy;
+	//private final
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 										FilterChain chain,
@@ -29,7 +28,7 @@ public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccess
 										HttpServletResponse response,
 			Authentication authentication) throws IOException {
 
-		this.redirectStrategy.sendRedirect(request, response, "/index");
+		//this.redirectStrategy.sendRedirect(request, response, "/index");
 	}
 
 
