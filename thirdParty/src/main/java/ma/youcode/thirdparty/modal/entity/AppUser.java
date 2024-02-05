@@ -2,14 +2,14 @@ package ma.youcode.thirdparty.modal.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor @NoArgsConstructor
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
