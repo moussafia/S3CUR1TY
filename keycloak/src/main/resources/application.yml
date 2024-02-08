@@ -1,0 +1,34 @@
+
+spring:
+  datasource:
+    driver-class-name: org:postgresql:Driver
+    username: postgres
+    password: 1234
+    url: jdbc:posgresql://localhost:5432/firstKeycloak
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+        dialect: org:hibernate:dialect:PostgreSQLDialect
+    show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-name: keycloak
+            client-id: sdia-customer-client
+            client-secret: rizghYM8nHtv44CxtHVTaRNJiTaP0qm1
+            scope: openid,profile,email,offline_access
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8090/login/oauth2/code/sdia-customer-client
+      provider:
+        keycloak:
+          issuer-uri: http://localhost:8080/realms/securityKeyCloak
+        user-name-attribute: preferred_username
+server:
+  port: 8081
+
+
+
