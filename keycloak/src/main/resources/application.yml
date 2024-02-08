@@ -24,10 +24,10 @@ spring:
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8090/login/oauth2/code/securityKeyCloak-breif
 
-      provider:
-        keycloak:
-          issuer-uri: http://localhost:8080/realms/securityKeyCloak
-        user-name-attribute: preferred_username
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/securityKeyCloak
+            user-name-attribute: preferred_username
 server:
   port: 8081
 
