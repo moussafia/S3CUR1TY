@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,12 @@ import java.util.Map;
 public class UserController {
     private AppUserRepository appUserRepository;
     private ClientRegistrationRepository clientRegistrationRepository;
+
+    public UserController(AppUserRepository appUserRepository, ClientRegistrationRepository clientRegistrationRepository) {
+        this.appUserRepository = appUserRepository;
+        this.clientRegistrationRepository = clientRegistrationRepository;
+    }
+
     @GetMapping("/notAuthorized")
     public String notAuthorized(){
         return "notAuthorized";

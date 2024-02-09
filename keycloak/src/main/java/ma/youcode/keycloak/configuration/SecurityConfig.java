@@ -32,9 +32,9 @@ public class SecurityConfig {
         return http
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(req-> req
-                        .requestMatchers("/","/oauth2Login/**","/webjars/**").permitAll())
+                        .requestMatchers("/","/oauth2Login/**","/webjars/**","/public/api/**").permitAll())
                 .authorizeHttpRequests(req-> req
-                        .anyRequest().permitAll())
+                        .anyRequest().authenticated())
                 .oauth2Login(lp->lp.loginPage("/oauth2Login")
                         .defaultSuccessUrl("/"))
                 .logout(logout->

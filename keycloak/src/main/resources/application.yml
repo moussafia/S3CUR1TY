@@ -21,7 +21,7 @@ spring:
             client-secret: rizghYM8nHtv44CxtHVTaRNJiTaP0qm1
             scope: openid,profile,email,offline_access
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8090/login/oauth2/code/securityKeyCloak-breif
+            redirect-uri: http://localhost:8081/login/oauth2/code/securityKeyCloak-breif
 
         provider:
           keycloak:
