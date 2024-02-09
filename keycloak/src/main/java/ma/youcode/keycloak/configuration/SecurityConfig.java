@@ -35,12 +35,16 @@ public class SecurityConfig {
                         .requestMatchers("/","/oauth2Login/**","/webjars/**","/public/api/**").permitAll())
                 .authorizeHttpRequests(req-> req
                         .anyRequest().authenticated())
-                .oauth2Login(lp->lp.loginPage("/oauth2Login")
-                        .defaultSuccessUrl("/"))
+                .oauth2Login(lp->
+                        lp.loginPage("/oauth2Login")
+                        .defaultSuccessUrl("/")
+                )
                 .logout(logout->
                         logout.logoutSuccessHandler(oidcLogoutSuccessHandler())
                                 .logoutSuccessUrl("/").permitAll()
-                                .clearAuthentication(true).deleteCookies("JSESSIONID"))
+                                .clearAuthentication(true)
+                                .deleteCookies("JSESSIONID")
+                )
                 .exceptionHandling(exception->exception.accessDeniedPage("/notAuthorized"))
                 .build();
     }

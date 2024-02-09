@@ -12,7 +12,22 @@
     <div class="ps-3">
         <div class="card">
             <div class="card-body">
-                this page is page of users
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">name</th>
+                        <th scope="col">email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="u:${users}">
+                        <td th:text="${u.id}"></td>
+                        <td th:text="${u.name}"></td>
+                        <td th:text="${u.email}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
